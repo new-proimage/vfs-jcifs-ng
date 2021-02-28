@@ -5,13 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>net.new-proimage</groupId>
-    <artifactId>vfs-jcifs</artifactId>
+    <artifactId>vfs-jcifs-smb</artifactId>
     <packaging>jar</packaging>
-    <version>1.0.1</version>
+    <version>0.9.1</version>
 
     <name>VFS JCIFS Provider</name>
-    <description>A jcifs based file system provider for Apache Commons VFS</description>
-    <url>https://github.com/new-proimage/vfs-jcifs-ng</url>
+    <description>A jcifs/smb based file system provider for Apache Commons VFS</description>
+    <url>https://github.com/new-proimage/vfs-jcifs-smb</url>
 
     <licenses>
         <license>
@@ -45,9 +45,9 @@
     </properties>
 
     <scm>
-        <connection>scm:git:https://github.com/new-proimage/vfs-jcifs-ng.git</connection>
-        <developerConnection>scm:git:https://github.com/new-proimage/vfs-jcifs-ng.git</developerConnection>
-        <url>https://github.com/new-proimage/vfs-jcifs-ng</url>
+        <connection>scm:git:https://github.com/new-proimage/vfs-jcifs-smb.git</connection>
+        <developerConnection>scm:git:https://github.com/new-proimage/vfs-jcifs-smb.git</developerConnection>
+        <url>https://github.com/new-proimage/vfs-jcifs-smb</url>
     </scm>
 
     <distributionManagement>

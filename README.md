@@ -1,31 +1,48 @@
-# vfs-jcifs-ng
-SMB Provider for Apache commons-vfs (Virtual File System) based on jcifs-ng
+# vfs-jcifs-smb
+This project is a vfs provider for the smb protocol.
+It can use either:
+* [jcifs-codelib](https://github.com/codelibs/jcifs)
+* vfs-sandbox
 
-This is pretty much the code for the CIFS provider available in the [Commons VFS](https://commons.apache.org/proper/commons-vfs/) Sandbox changed
-slightly to account for the API changes between the original [JCIFS](https://jcifs.samba.org/) and [JCIFS-NG](https://github.com/AgNO3/jcifs-ng).
+It clones the [vfs-jcifs-smb](https://github.com/new-proimage/vfs-jcifs-smb), that supported jcifs-ng. 
+It also contains the vfs-sandbox smb provider.
+
+This Mirrors the approach of jcifs-codelib which combines jcifs-ng and the old smb.
+
+to use the new jcifs-ng implementation you can use the registered schema : "smb".
+to use the legacy vfs smb provider and jcifs old implemenation you can use the registered schema : "smb1".
+
+## Why ?
+Since the combination of: [jcifs-ng](https://github.com/AgNO3/jcifs-ng) together with [vfs-jcifs-smb](https://github.com/new-proimage/vfs-jcifs-smb)
+already provides SMB 1/2/3 implementation why do we need this library.
+
+The reason is that some defaults, or connections behave a bit different between jcifs-ng and the original jcifs when working with SMB1.
+I found myself playing with flags like RAW NTLM or disabling the jcifs.smb.client.useSMB2Negotiation, to connect to locations which the original jcifs connected before.
+
+Inorder to provide full backward compatability for those cases, I needed the old jcifs implementation with vfs.
 
 ## Maven
 ```xml
 <dependency>
-    <groupId>net.idauto.oss.jcifs</groupId>
-    <artifactId>vfs-jcifs-ng</artifactId>
-    <version>1.0.1</version>
+    <groupId>net.new-proimage</groupId>
+    <artifactId>vfs-jcifs-smb</artifactId>
+    <version>0.9.1</version>
 </dependency>
 ```
 
 ## Notes
 
-* You must provide the versions of Commons VFS (tested with 2.1 and 2.2), and jcifs-ng (tested with 2.0.4, and 2.1.0-SNAPSHOT) that you wish to use.
+* You must provide the versions of Commons VFS, and jcifs that you wish to use.
 ```xml
 <dependency>
     <groupId>org.apache.commons</groupId>
     <artifactId>commons-vfs2</artifactId>
-    <version>2.2</version>
+    <version>2.7.0</version>
 </dependency>
 <dependency>
-    <groupId>eu.agno3.jcifs</groupId>
-    <artifactId>jcifs-ng</artifactId>
-    <version>2.1.0-SNAPSHOT</version>
+    <groupId>org.codelibs</groupId>
+    <artifactId>jcifs</artifactId>
+    <version>2.1.19</version>
 </dependency>
 ```
 * Commons VFS uses Apache Commons Logging and JCIFS-NG used SLF4J, so to get full logging you need to account for both.
