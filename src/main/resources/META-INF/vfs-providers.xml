@@ -21,4 +21,10 @@
 		<scheme name="smb"/>
 		<if-available class-name="jcifs.CIFSContext"/>
 	</provider>
+
+	<provider class-name="org.apache.commons.vfs2.provider.smb.SmbFileProvider">
+		<scheme name="smb1"/>
+		<if-available class-name="jcifs.smb1.smb1.SmbFile"/>
+	</provider>
+
 </providers>
