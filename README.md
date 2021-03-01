@@ -1,25 +1,29 @@
 # vfs-jcifs-smb
 This project is a vfs provider for the smb protocol.
-It can use either:
-* [jcifs-codelib](https://github.com/codelibs/jcifs)
-* vfs-sandbox
+It can use one of two smb implementations:
+* [jcifs-codelib](https://github.com/codelibs/jcifs) for SMB1(jcifs)/SMB2/SMB3
+* [vfs-sandbox](http://commons.apache.org/proper/commons-vfs/) for the original SMB1(jcifs) implementation.
 
-It clones the [vfs-jcifs-smb](https://github.com/new-proimage/vfs-jcifs-smb), that supported jcifs-ng. 
-It also contains the vfs-sandbox smb provider.
+It clones the [vfs-jcifs-smb](https://github.com/new-proimage/vfs-jcifs-smb), that supported jcifs-ng.  
+It also contains the jcifs smb provider from vfs-sandbox.
 
-This Mirrors the approach of jcifs-codelib which combines jcifs-ng and the old smb.
+This Mirrors the approach of the [jcifs-codelib](https://github.com/codelibs/jcifs) project, which combines jcifs-ng and the old jcifs implementation.
 
-to use the new jcifs-ng implementation you can use the registered schema : "smb".
-to use the legacy vfs smb provider and jcifs old implemenation you can use the registered schema : "smb1".
+* to use the new jcifs-ng implementation you can use the registered schema : "smb".
+* to use the legacy vfs smb provider and jcifs old implemenation you can use the registered schema : "smb1".
 
 ## Why ?
-Since the combination of: [jcifs-ng](https://github.com/AgNO3/jcifs-ng) together with [vfs-jcifs-smb](https://github.com/new-proimage/vfs-jcifs-smb)
+Since the combination of [jcifs-ng](https://github.com/AgNO3/jcifs-ng) together with [vfs-jcifs-smb](https://github.com/new-proimage/vfs-jcifs-smb)
 already provides SMB 1/2/3 implementation why do we need this library.
 
 The reason is that some defaults, or connections behave a bit different between jcifs-ng and the original jcifs when working with SMB1.
 I found myself playing with flags like RAW NTLM or disabling the jcifs.smb.client.useSMB2Negotiation, to connect to locations which the original jcifs connected before.
 
-Inorder to provide full backward compatability for those cases, I needed the old jcifs implementation with vfs.
+Inorder to provide full backward compatibility when upgrade to the new smb implementation that support SMB2 or SMB3, 
+We need a way to run the old jcifs library.  
+This can only be achieved with the approach from [jcifs-codelib](https://github.com/codelibs/jcifs)
+Using the SMB2/3 with new code (and possibly even SMB1),
+But having the original implementation of jcifs when needed.
 
 ## Maven
 ```xml
