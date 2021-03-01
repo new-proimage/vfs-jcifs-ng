@@ -28,7 +28,7 @@ But having the original implementation of jcifs when needed.
 ## Maven
 ```xml
 <dependency>
-    <groupId>net.new-proimage</groupId>
+    <groupId>newproimage.com.vfs-jcifs-smb</groupId>
     <artifactId>vfs-jcifs-smb</artifactId>
     <version>0.9.1</version>
 </dependency>
