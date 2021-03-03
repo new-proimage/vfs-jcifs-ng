@@ -4,10 +4,10 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>newproimage.com.vfs-jcifs-smb</groupId>
+    <groupId>com.github.new-proimage</groupId>
     <artifactId>vfs-jcifs-smb</artifactId>
     <packaging>jar</packaging>
-    <version>0.9.1</version>
+    <version>0.9.2</version>
 
     <name>VFS JCIFS Provider</name>
     <description>A jcifs/smb based file system provider for Apache Commons VFS</description>
@@ -53,11 +53,11 @@
     <distributionManagement>
         <repository>
             <id>ossrh</id>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
         <snapshotRepository>
             <id>ossrh-snapshot</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+            <url>>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
         </snapshotRepository>
     </distributionManagement>
 

@@ -28,9 +28,9 @@ But having the original implementation of jcifs when needed.
 ## Maven
 ```xml
 <dependency>
-    <groupId>newproimage.com.vfs-jcifs-smb</groupId>
+    <groupId>com.github.new-proimage</groupId>
     <artifactId>vfs-jcifs-smb</artifactId>
-    <version>0.9.1</version>
+    <version>0.9.2</version>
 </dependency>
 ```
 
@@ -46,9 +46,37 @@ But having the original implementation of jcifs when needed.
 <dependency>
     <groupId>org.codelibs</groupId>
     <artifactId>jcifs</artifactId>
-    <version>2.1.19</version>
+    <version>2.1.24</version>
 </dependency>
 ```
+
+To choose the old jcifs implementation (from the vfs sandbox) you can: 
+
+Use url with smb1, for example: `smb1://myComputerAddress/shareName/folder`
+
+The smb1 schema is registered automatically with the old jcifs implementation, when using:
+* `StandardFileSystemManager` or
+* `VFS.getManager()`
+
+Alternatively if you want to use the "smb" schema with the legacy jcifs impelementation, you need to set your own provider:
+
+```java
+import org.apache.commons.vfs2.impl.DefaultFileSystemManager;
+import org.apache.commons.vfs2.provider.smb.SmbFileProvider;
+
+public class Example {
+    public static void main(String[] args) {
+        DefaultFileSystemManager manager = new DefaultFileSystemManager();
+        manager.addProvider("smb", new SmbFileProvider());
+        manager.init();
+
+        // use the manager, it contains the old jcifs impelementation from the vfs-sandbox
+
+    }
+}
+```
+
+
 * Commons VFS uses Apache Commons Logging and JCIFS-NG used SLF4J, so to get full logging you need to account for both.
 * JCIFS-NG apparently needs Unlimited Crypto enabled for the JVM, but that may depend on servers you are connecting to.
 * I didn't implement support for the deprecated practice of putting the credentials in the url. You can provide the
