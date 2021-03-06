@@ -30,7 +30,7 @@ But having the original implementation of jcifs when needed.
 <dependency>
     <groupId>com.github.new-proimage</groupId>
     <artifactId>vfs-jcifs-smb</artifactId>
-    <version>0.9.2</version>
+    <version>0.9.3</version>
 </dependency>
 ```
 
